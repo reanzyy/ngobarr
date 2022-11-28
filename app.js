@@ -1,7 +1,7 @@
 const app = require("express")();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {});
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -25,6 +25,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(port, () => {
-  console.log("listening on *:3000");
-});
+server.listen(PORT, () => console.log(`app listening on port ${PORT}`));
